@@ -8,9 +8,11 @@ export default function ToDoList() {
     const [change, setChange] = useState(false);
 
     const addItemFunction = () => {
-        setChange(!change);
-        itemsList.push(value);
-        setValue("");
+        if(value){
+            setChange(!change);
+            itemsList.push(value);
+            setValue("");
+        }
     }
 
     useEffect(() => {
