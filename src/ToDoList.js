@@ -11,13 +11,11 @@ export default function ToDoList() {
       let list = localStorage.getItem("toDoList") ? JSON.parse(localStorage.getItem("toDoList")) : [];
   
       if (list !== undefined) {
-        list.push(data);
+        list.push(data.charAt(0).toUpperCase() + data.slice(1));
       } else {
-        list = [data];
+        list = [data.charAt(0).toUpperCase() + data.slice(1)];
       }
-      console.log( typeof list)
       localStorage.setItem("toDoList", JSON.stringify(list));
-      console.log(localStorage.getItem("toDoList"))
     }
 
     const addItemFunction = () => {
@@ -29,12 +27,10 @@ export default function ToDoList() {
     }
 
     useEffect(() => {
-        console.log(itemsList)
        setValue();
     }, [change])
 
     itemsList = localStorage.getItem("toDoList") ? JSON.parse(localStorage.getItem("toDoList")) : [];
-    console.log(typeof itemsList)
   return (
     <div className="container">
       <h1 className="heading">To Do List</h1>
