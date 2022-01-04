@@ -20,39 +20,31 @@ export default function ItemsList(props) {
 
   const handleUpdate = (e) => {
     setUpdate(e.target.value);
-    console.log("updating");
   };
 
   const handleEditButton = (e, key) => {
     setValue(key);
     setOpen(true);
-    console.log("editing");
   };
 
   const handleDeleteButton = (e, key) => {
     const index = toDoList.indexOf(key);
-    console.log(index);
-    console.log("bfr", toDoList);
     toDoList.splice(index, 1);
     dataStorage(toDoList);
   };
 
   const handleModalClose = () => {
     setOpen(false);
-    console.log("closing");
   };
 
   const handleSave = () => {
-    console.log("saving");
     const index = toDoList.indexOf(value);
 
     if (update) {
       const updatedString = update.charAt(0).toUpperCase() + update.slice(1);
       toDoList[index] = updatedString;
-      console.log("ll", updatedString);
     }
 
-    console.log("saving list", toDoList);
     dataStorage(toDoList);
   };
 

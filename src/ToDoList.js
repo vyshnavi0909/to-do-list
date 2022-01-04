@@ -4,7 +4,7 @@ import "./styles.css";
 var itemsList;
 export default function ToDoList() {
    
-    const [value, setValue] = useState();
+    const [value, setValue] = useState("");
     const [change, setChange] = useState(false);
 
     const dataToStorage = (data) => {
@@ -22,12 +22,11 @@ export default function ToDoList() {
         if(value){
             setChange(!change);
             dataToStorage(value);
-            setValue("");
         }
     }
 
     useEffect(() => {
-       setValue();
+       setValue("");
     }, [change])
 
     itemsList = localStorage.getItem("toDoList") ? JSON.parse(localStorage.getItem("toDoList")) : [];
@@ -41,7 +40,7 @@ export default function ToDoList() {
           className="addItem-input"
           name="addItem"
           placeholder="Enter your to do item"
-        //   value={value}
+          value={value}
           onChange={e => setValue(e.target.value)}
         />
       </div>
